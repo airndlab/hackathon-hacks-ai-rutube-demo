@@ -1,0 +1,21 @@
+services:
+  jupyter:
+    restart: always
+    image: quay.io/jupyter/scipy-notebook:2023-10-31
+    ports:
+      - 8888:8888
+    privileged: true
+  txtai:
+    image: airndlab/hackathon-hacks-ai-rutube-txtai:0.3.3
+    ports:
+      - 8080:8080
+    volumes:
+      - ./indexes/all_videos/:/code/video_index/
+      - ./indexes/all_channels/:/code/channel_index/
+      - ./indexes/autocomplete_quieries.json:/code/autocomplete_quieries.json
+  ui:
+    image: airndlab/hackathon-hacks-ai-rutube-ui:1.2.3
+    ports:
+      - 3000:3000
+    environment:
+      - NEXT_PUBLIC_BACKEND_HOST=http://txtai:8080
