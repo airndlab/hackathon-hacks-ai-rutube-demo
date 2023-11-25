@@ -10,4 +10,4 @@
 - Add txtAI index of videos to `/indexes/all_videos`
 - Add txtAI index of channels to `/indexes/all_channels`
 - Add autocomplete of titles to `/indexes/autocomplete_quieries.json`
-- Run `docker compose run -d`
+- Run `docker compose up -d`
